@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - VaultFlow</title>
+    <meta name="description" content="Login to your VaultFlow account" />
+    <meta name="author" content="VaultFlow" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              finblack: '#121212',
+              'finblack-light': '#2d2d2d',
+              finyellow: '#FFD700',
+              'finyellow-dark': '#E6C200',
+              fingray: '#F5F5F5',
+              'fingray-dark': '#E0E0E0',
+            },
+            borderRadius: {
+              xl: '1rem',
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  </head>
+
+  <body class="bg-fingray text-finblack min-h-screen flex flex-col">
+    <header class="bg-white shadow-md py-4">
+      <div class="container mx-auto px-4">
+        <a href="index.html" class="font-bold text-2xl md:text-3xl tracking-tight inline-flex items-center">
+          <div class="mr-2 relative">
+            <div class="h-8 w-8 bg-finyellow rounded-lg flex items-center justify-center">
+              <div class="h-4 w-4 bg-finblack rounded-sm"></div>
+            </div>
+          </div>
+          <span class="text-finblack">Vault</span>
+          <span class="text-finyellow">Flow</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center p-4">
+      <div class="bg-white rounded-xl shadow-lg p-8 w-full max-w-md">
+        <div class="text-center mb-8">
+          <h1 class="text-3xl font-bold">Welcome Back</h1>
+          <p class="text-gray-600 mt-2">Sign in to your account</p>
+        </div>
+
+        <form id="loginForm" class="space-y-6">
+          <div class="relative">
+            <input
+              type="email"
+              id="email"
+              placeholder=" "
+              class="h-14 w-full px-4 bg-fingray rounded-xl border-2 border-transparent transition-all duration-300 focus:outline-none focus:border-finyellow focus:ring-2 focus:ring-finyellow/30"
+              required
+            />
+            <label for="email" class="absolute left-4 top-4 text-gray-500 transition-all duration-300 pointer-events-none">
+              Email
+            </label>
+          </div>
+
+          <div class="relative">
+            <input
+              type="password"
+              id="password"
+              placeholder=" "
+              class="h-14 w-full px-4 bg-fingray rounded-xl border-2 border-transparent transition-all duration-300 focus:outline-none focus:border-finyellow focus:ring-2 focus:ring-finyellow/30"
+              required
+            />
+            <label for="password" class="absolute left-4 top-4 text-gray-500 transition-all duration-300 pointer-events-none">
+              Password
+            </label>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                id="remember"
+                class="h-4 w-4 text-finyellow focus:ring-finyellow border-gray-300 rounded"
+              />
+              <label for="remember" class="ml-2 block text-sm text-gray-600">
+                Remember me
+              </label>
+            </div>
+            <a href="#" class="text-sm font-medium text-finyellow hover:text-finyellow-dark">
+              Forgot password?
+            </a>
+          </div>
+
+          <div id="errorMessage" class="text-red-500 text-sm hidden"></div>
+
+          <button
+            type="submit"
+            class="w-full bg-finyellow hover:bg-finyellow-dark text-finblack font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-finyellow/50"
+          >
+            Sign In
+          </button>
+        </form>
+
+        <div class="mt-8 text-center">
+          <p class="text-gray-600">
+            Don't have an account?
+            <a href="register.html" class="font-medium text-finyellow hover:text-finyellow-dark">
+              Create account
+            </a>
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-white py-6">
+      <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
+        <p>© 2023 VaultFlow. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="js/firebase-config.js"></script>
+    <script src="js/login.js"></script>
+  </body>
+</html>

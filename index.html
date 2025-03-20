@@ -1,18 +1,214 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>yellow-black-finance-hub</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+    <title>VaultFlow - Financial Management</title>
+    <meta name="description" content="Secure financial management platform" />
+    <meta name="author" content="VaultFlow" />
     <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
-
-  <body>
-    <div id="root"></div>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              finblack: '#121212',
+              'finblack-light': '#2d2d2d',
+              finyellow: '#FFD700',
+              'finyellow-dark': '#E6C200',
+              fingray: '#F5F5F5',
+              'fingray-dark': '#E0E0E0',
+            },
+            borderRadius: {
+              xl: '1rem',
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
+  </head>
+
+  <body class="bg-white text-finblack min-h-screen">
+    <header class="bg-white shadow-md py-4">
+      <div class="container mx-auto px-4 flex justify-between items-center">
+        <a href="index.html" class="font-bold text-2xl md:text-3xl tracking-tight inline-flex items-center">
+          <div class="mr-2 relative">
+            <div class="h-8 w-8 bg-finyellow rounded-lg flex items-center justify-center">
+              <div class="h-4 w-4 bg-finblack rounded-sm"></div>
+            </div>
+          </div>
+          <span class="text-finblack">Vault</span>
+          <span class="text-finyellow">Flow</span>
+        </a>
+        <nav class="hidden md:flex space-x-8">
+          <a href="#features" class="font-medium text-finblack hover:text-finyellow transition-colors">Features</a>
+          <a href="#pricing" class="font-medium text-finblack hover:text-finyellow transition-colors">Pricing</a>
+          <a href="#about" class="font-medium text-finblack hover:text-finyellow transition-colors">About</a>
+        </nav>
+        <div class="flex items-center space-x-4">
+          <a href="login.html" class="font-medium text-finblack hover:text-finyellow transition-colors">Login</a>
+          <a href="register.html" class="bg-finyellow hover:bg-finyellow-dark text-finblack font-semibold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95">
+            Get Started
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="py-20 px-4">
+        <div class="container mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-12">
+          <div class="flex-1 space-y-8">
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+              Manage Your Finances with <span class="text-finyellow">Confidence</span>
+            </h1>
+            <p class="text-lg text-gray-600 max-w-xl">
+              Take control of your financial future with our powerful and intuitive financial management platform. 
+              Track, analyze, and optimize your spending with ease.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="register.html" class="bg-finyellow hover:bg-finyellow-dark text-finblack font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] text-center">
+                Start for Free
+              </a>
+              <a href="#features" class="bg-fingray hover:bg-fingray-dark text-finblack font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] text-center">
+                Learn More
+              </a>
+            </div>
+          </div>
+          <div class="flex-1">
+            <img src="https://placehold.co/600x400/ffd700/121212?text=Financial+Dashboard" alt="Financial Dashboard" class="rounded-xl shadow-lg" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section id="features" class="py-20 px-4 bg-fingray">
+        <div class="container mx-auto max-w-6xl">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Powerful Features</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Everything you need to take control of your financial life in one place.</p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg">
+              <div class="h-12 w-12 bg-finyellow/20 rounded-lg flex items-center justify-center mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-finyellow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-3">Budget Tracking</h3>
+              <p class="text-gray-600">Create and manage budgets with ease. Stay on top of your spending habits and save more.</p>
+            </div>
+            
+            <div class="bg-white p-8 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg">
+              <div class="h-12 w-12 bg-finyellow/20 rounded-lg flex items-center justify-center mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-finyellow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-3">Financial Insights</h3>
+              <p class="text-gray-600">Get detailed insights and analytics on your spending patterns and financial health.</p>
+            </div>
+            
+            <div class="bg-white p-8 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg">
+              <div class="h-12 w-12 bg-finyellow/20 rounded-lg flex items-center justify-center mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-finyellow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold mb-3">Secure Access</h3>
+              <p class="text-gray-600">Your financial data is protected with enterprise-grade security and encryption.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="py-20 px-4">
+        <div class="container mx-auto max-w-6xl text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to take control of your finances?</h2>
+          <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">Join thousands of users who have transformed their financial lives with VaultFlow.</p>
+          <a href="register.html" class="inline-block bg-finyellow hover:bg-finyellow-dark text-finblack font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+            Create Your Free Account
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-finblack text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <a href="index.html" class="font-bold text-2xl tracking-tight inline-flex items-center">
+              <span class="text-white">Vault</span>
+              <span class="text-finyellow">Flow</span>
+            </a>
+            <p class="mt-4 text-gray-400">Secure financial management for everyone.</p>
+          </div>
+          
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Company</h3>
+            <ul class="space-y-2">
+              <li><a href="#" class="text-gray-400 hover:text-finyellow transition-colors">About Us</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-finyellow transition-colors">Careers</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-finyellow transition-colors">Contact</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Resources</h3>
+            <ul class="space-y-2">
+              <li><a href="#" class="text-gray-400 hover:text-finyellow transition-colors">Blog</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-finyellow transition-colors">Help Center</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-finyellow transition-colors">FAQs</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Legal</h3>
+            <ul class="space-y-2">
+              <li><a href="#" class="text-gray-400 hover:text-finyellow transition-colors">Privacy Policy</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-finyellow transition-colors">Terms of Service</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-finyellow transition-colors">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-400">© 2023 VaultFlow. All rights reserved.</p>
+          <div class="flex space-x-6 mt-4 md:mt-0">
+            <a href="#" class="text-gray-400 hover:text-finyellow transition-colors">
+              <span class="sr-only">Facebook</span>
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+              </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-finyellow transition-colors">
+              <span class="sr-only">Twitter</span>
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+              </svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-finyellow transition-colors">
+              <span class="sr-only">Instagram</span>
+              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/firebase-config.js"></script>
   </body>
 </html>

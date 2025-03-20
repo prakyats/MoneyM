@@ -1,69 +1,102 @@
-# Welcome to your Lovable project
 
-## Project info
+# VaultFlow - Financial Management Website
 
-**URL**: https://lovable.dev/projects/7eb961d4-3ccb-41a6-beac-edddf502e517
+A modern, responsive financial management website built with HTML, Tailwind CSS, and Firebase integration.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- **User Authentication**: Secure login and registration using Firebase Authentication
+- **Responsive Design**: Works perfectly on mobile, tablet, and desktop devices
+- **Modern UI**: Clean and professional interface with yellow and black color scheme
+- **Dashboard**: Visual representation of financial data with charts
+- **Firebase Integration**: Authentication and Firestore database for user data
 
-**Use Lovable**
+## Pages
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7eb961d4-3ccb-41a6-beac-edddf502e517) and start prompting.
+1. **Landing Page**: Introduction to VaultFlow and its features
+2. **Login Page**: For existing users to sign in
+3. **Registration Page**: For new users to create an account
+4. **Dashboard**: Financial overview with charts and transactions
 
-Changes made via Lovable will be committed automatically to this repo.
+## Technologies Used
 
-**Use your preferred IDE**
+- HTML5
+- Tailwind CSS
+- JavaScript
+- Firebase (Authentication & Firestore)
+- Chart.js for data visualization
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Setup Instructions
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. **Clone the repository**
+   ```
+   git clone <repository-url>
+   cd vaultflow
+   ```
 
-Follow these steps:
+2. **Set up Firebase**
+   - Create a Firebase project at [firebase.google.com](https://firebase.google.com)
+   - Enable Authentication (Email/Password) and Firestore Database
+   - Replace the Firebase configuration in `js/firebase-config.js` with your own Firebase project details:
+   ```javascript
+   const firebaseConfig = {
+     apiKey: "YOUR_API_KEY",
+     authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+     projectId: "YOUR_PROJECT_ID",
+     storageBucket: "YOUR_PROJECT_ID.appspot.com",
+     messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+     appId: "YOUR_APP_ID"
+   };
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+3. **Run the application**
+   - Open `index.html` in your browser to view the website
+   - For local development, you can use a simple HTTP server:
+     ```
+     npm install -g http-server
+     http-server
+     ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## Project Structure
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+/
+├── index.html           # Landing page
+├── login.html           # Login page
+├── register.html        # Registration page
+├── dashboard.html       # User dashboard
+├── js/
+│   ├── firebase-config.js  # Firebase configuration
+│   ├── login.js            # Login functionality
+│   ├── register.js         # Registration functionality
+│   └── dashboard.js        # Dashboard functionality and charts
+└── README.md            # Project documentation
 ```
 
-**Edit a file directly in GitHub**
+## Authentication Flow
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. **New User Registration**:
+   - User enters personal information and creates password
+   - System validates input and creates account in Firebase
+   - User data is stored in Firestore database
+   - User is automatically logged in and redirected to dashboard
 
-**Use GitHub Codespaces**
+2. **Existing User Login**:
+   - User enters email and password
+   - System authenticates with Firebase
+   - Upon successful authentication, user is redirected to dashboard
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+3. **Session Management**:
+   - Firebase handles session persistence
+   - Authenticated users are redirected to dashboard when visiting login/register pages
+   - Unauthenticated users are redirected to login when attempting to access dashboard
 
-## What technologies are used for this project?
+## Customization
 
-This project is built with .
+- **Colors**: Edit the Tailwind configuration in the HTML files to change the color scheme
+- **Content**: Modify the HTML to update text and imagery
+- **Firebase**: Update the Firebase configuration to connect to your own Firebase project
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## License
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/7eb961d4-3ccb-41a6-beac-edddf502e517) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+This project is licensed under the MIT License - see the LICENSE file for details.
