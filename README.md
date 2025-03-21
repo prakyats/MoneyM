@@ -1,5 +1,5 @@
 
-# VaultFlow - Financial Management Website
+# Money Mentor - Financial Management Website
 
 A modern, responsive financial management website built with HTML, Tailwind CSS, and Firebase integration.
 
@@ -8,12 +8,13 @@ A modern, responsive financial management website built with HTML, Tailwind CSS,
 - **User Authentication**: Secure login and registration using Firebase Authentication
 - **Responsive Design**: Works perfectly on mobile, tablet, and desktop devices
 - **Modern UI**: Clean and professional interface with yellow and black color scheme
-- **Dashboard**: Visual representation of financial data with charts
+- **Dashboard**: Visual representation of financial data with interactive charts
 - **Firebase Integration**: Authentication and Firestore database for user data
+- **Interactive Elements**: Animated UI components and interactive charts for better user engagement
 
 ## Pages
 
-1. **Landing Page**: Introduction to VaultFlow and its features
+1. **Landing Page**: Introduction to Money Mentor and its features
 2. **Login Page**: For existing users to sign in
 3. **Registration Page**: For new users to create an account
 4. **Dashboard**: Financial overview with charts and transactions
@@ -31,7 +32,7 @@ A modern, responsive financial management website built with HTML, Tailwind CSS,
 1. **Clone the repository**
    ```
    git clone <repository-url>
-   cd vaultflow
+   cd money-mentor
    ```
 
 2. **Set up Firebase**
@@ -90,6 +91,13 @@ A modern, responsive financial management website built with HTML, Tailwind CSS,
    - Firebase handles session persistence
    - Authenticated users are redirected to dashboard when visiting login/register pages
    - Unauthenticated users are redirected to login when attempting to access dashboard
+
+## Interactive Features
+
+- **Animated UI Elements**: Hover effects, transitions, and scaling animations for better user engagement
+- **Interactive Charts**: Click on chart segments to view detailed information
+- **Mobile-Friendly Navigation**: Responsive design with mobile menu toggle
+- **Real-time Updates**: Dashboard updates in real-time with user data
 
 ## Customization
 

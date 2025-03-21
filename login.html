@@ -4,9 +4,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - VaultFlow</title>
-    <meta name="description" content="Login to your VaultFlow account" />
-    <meta name="author" content="VaultFlow" />
+    <title>Login - Money Mentor</title>
+    <meta name="description" content="Log in to your Money Mentor account" />
+    <meta name="author" content="Money Mentor" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -32,97 +33,101 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
   </head>
 
   <body class="bg-fingray text-finblack min-h-screen flex flex-col">
-    <header class="bg-white shadow-md py-4">
-      <div class="container mx-auto px-4">
+    <header class="bg-white shadow-sm py-4">
+      <div class="container mx-auto px-4 flex justify-between items-center">
         <a href="index.html" class="font-bold text-2xl md:text-3xl tracking-tight inline-flex items-center">
           <div class="mr-2 relative">
             <div class="h-8 w-8 bg-finyellow rounded-lg flex items-center justify-center">
               <div class="h-4 w-4 bg-finblack rounded-sm"></div>
             </div>
           </div>
-          <span class="text-finblack">Vault</span>
-          <span class="text-finyellow">Flow</span>
+          <span class="text-finblack">Money</span>
+          <span class="text-finyellow">Mentor</span>
         </a>
+        <div>
+          <a href="register.html" class="text-finblack hover:text-finyellow transition-colors">Create Account</a>
+        </div>
       </div>
     </header>
 
     <main class="flex-grow flex items-center justify-center p-4">
-      <div class="bg-white rounded-xl shadow-lg p-8 w-full max-w-md">
-        <div class="text-center mb-8">
-          <h1 class="text-3xl font-bold">Welcome Back</h1>
-          <p class="text-gray-600 mt-2">Sign in to your account</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl w-full">
+        <!-- Image Section -->
+        <div class="hidden md:flex flex-col justify-center">
+          <img src="https://images.unsplash.com/photo-1586473219010-2ffc57b0d282?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=800&q=80" 
+               alt="Financial management" 
+               class="rounded-xl shadow-lg object-cover h-[500px]" />
         </div>
-
-        <form id="loginForm" class="space-y-6">
-          <div class="relative">
-            <input
-              type="email"
-              id="email"
-              placeholder=" "
-              class="h-14 w-full px-4 bg-fingray rounded-xl border-2 border-transparent transition-all duration-300 focus:outline-none focus:border-finyellow focus:ring-2 focus:ring-finyellow/30"
-              required
-            />
-            <label for="email" class="absolute left-4 top-4 text-gray-500 transition-all duration-300 pointer-events-none">
-              Email
-            </label>
+        
+        <!-- Login Form -->
+        <div class="bg-white p-8 rounded-xl shadow-lg">
+          <div class="text-center mb-8">
+            <h1 class="text-2xl font-bold">Welcome Back</h1>
+            <p class="text-finblack/60 mt-2">Enter your credentials to access your account</p>
           </div>
-
-          <div class="relative">
-            <input
-              type="password"
-              id="password"
-              placeholder=" "
-              class="h-14 w-full px-4 bg-fingray rounded-xl border-2 border-transparent transition-all duration-300 focus:outline-none focus:border-finyellow focus:ring-2 focus:ring-finyellow/30"
-              required
-            />
-            <label for="password" class="absolute left-4 top-4 text-gray-500 transition-all duration-300 pointer-events-none">
-              Password
-            </label>
-          </div>
-
-          <div class="flex items-center justify-between">
-            <div class="flex items-center">
-              <input
-                type="checkbox"
-                id="remember"
-                class="h-4 w-4 text-finyellow focus:ring-finyellow border-gray-300 rounded"
-              />
-              <label for="remember" class="ml-2 block text-sm text-gray-600">
-                Remember me
-              </label>
+          
+          <div id="errorMessage" class="hidden mb-6 p-4 bg-red-100 text-red-600 rounded-lg"></div>
+          
+          <form id="loginForm">
+            <div class="space-y-6">
+              <div class="relative">
+                <input 
+                  id="email" 
+                  type="email" 
+                  required 
+                  class="form-input" 
+                  placeholder=" "
+                />
+                <label for="email" class="form-label">Email Address</label>
+              </div>
+              
+              <div class="relative">
+                <input 
+                  id="password" 
+                  type="password" 
+                  required 
+                  class="form-input" 
+                  placeholder=" "
+                />
+                <label for="password" class="form-label">Password</label>
+              </div>
+              
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <input id="remember" type="checkbox" class="h-4 w-4 text-finyellow focus:ring-finyellow/30 border-gray-300 rounded" />
+                  <label for="remember" class="ml-2 block text-sm text-finblack">Remember me</label>
+                </div>
+                
+                <a href="#" class="text-sm font-medium text-finyellow hover:underline">Forgot password?</a>
+              </div>
+              
+              <button 
+                type="submit" 
+                class="w-full bg-finyellow hover:bg-finyellow-dark text-finblack font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
+              >
+                Sign In
+              </button>
             </div>
-            <a href="#" class="text-sm font-medium text-finyellow hover:text-finyellow-dark">
-              Forgot password?
-            </a>
+          </form>
+          
+          <div class="mt-6 text-center">
+            <p class="text-finblack/60">
+              Don't have an account? 
+              <a href="register.html" class="font-medium text-finyellow hover:underline">Sign up now</a>
+            </p>
           </div>
-
-          <div id="errorMessage" class="text-red-500 text-sm hidden"></div>
-
-          <button
-            type="submit"
-            class="w-full bg-finyellow hover:bg-finyellow-dark text-finblack font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-finyellow/50"
-          >
-            Sign In
-          </button>
-        </form>
-
-        <div class="mt-8 text-center">
-          <p class="text-gray-600">
-            Don't have an account?
-            <a href="register.html" class="font-medium text-finyellow hover:text-finyellow-dark">
-              Create account
-            </a>
-          </p>
         </div>
       </div>
     </main>
 
-    <footer class="bg-white py-6">
-      <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
-        <p>© 2023 VaultFlow. All rights reserved.</p>
+    <footer class="bg-white border-t border-gray-200 py-6">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-finblack/60">© 2023 Money Mentor. All rights reserved.</p>
       </div>
     </footer>
 
